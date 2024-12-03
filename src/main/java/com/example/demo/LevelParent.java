@@ -123,6 +123,9 @@ public abstract class LevelParent extends Observable {
 
 	private void fireProjectile() {
 		ActiveActorDestructible projectile = user.fireProjectile();
+		if (projectile == null) {
+			return;
+		}
 		root.getChildren().add(projectile);
 		userProjectiles.add(projectile);
 	}
