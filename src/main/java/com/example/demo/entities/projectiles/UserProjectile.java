@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entities.projectiles;
 
 public class UserProjectile extends Projectile {
 
