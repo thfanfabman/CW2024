@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.*;
+import javafx.scene.effect.Glow;
 
 public class Boss extends FighterPlane {
 
@@ -74,7 +75,7 @@ public class Boss extends FighterPlane {
 
 	private void updateShield() {
 		if (isShielded) framesWithShieldActivated++;
-		else if (shieldShouldBeActivated()) activateShield();	
+		else if (shieldShouldBeActivated()) activateShield();
 		if (shieldExhausted()) deactivateShield();
 	}
 
@@ -110,11 +111,13 @@ public class Boss extends FighterPlane {
 
 	private void activateShield() {
 		isShielded = true;
+		setEffect(new Glow(1));
 	}
 
 	private void deactivateShield() {
 		isShielded = false;
 		framesWithShieldActivated = 0;
+		setEffect(null);
 	}
 
 }
