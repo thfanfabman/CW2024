@@ -17,8 +17,8 @@ import java.lang.reflect.InvocationTargetException;
 
 public class MainMenu {
 
-    private Stage stage;
-    private Controller controller;
+    final private Stage stage;
+    final private Controller controller;
 
     public MainMenu(Stage stage, Controller controller) {
         this.stage = stage;
