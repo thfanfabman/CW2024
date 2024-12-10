@@ -61,9 +61,13 @@ public class MainMenu {
         stage.show();
     }
     private void showHowToPlay() {
-        Label howToPlayLabel = new Label("How To Play:\n\n1. Use arrow keys to move your character.\n"
-                + "2. Press spacebar to shoot.\n"
-                + "3. Avoid enemy attacks and destroy all targets to win.\n");
+        Label howToPlayLabel = new Label("""
+                How To Play:
+                
+                1. Use arrow keys to move your character.
+                2. Press spacebar to shoot.
+                3. Avoid enemy attacks and destroy all targets to win.
+                """);
         howToPlayLabel.setFont(new Font("Arial", 16));
         howToPlayLabel.setTextFill(Color.BLACK);
 
