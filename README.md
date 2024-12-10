@@ -1,5 +1,14 @@
-Changes made
-----------------------
+### Added Classes
+**MainMenu**
++ Created main menu for the game
++ Buttons for starting the game, "tutorial", and exiting
++ how to play is just text instructions
++ how to play current breaks the main menu and makes everything off center even when you return to the main menu
+
+### Modified Classes made
+
+**Main**
++ Changed to show the main menu instead of instantly starting the game
 
 **ShieldImage**
 + changed the getResource name to match the image in the resources folder
@@ -14,6 +23,9 @@ Changes made
 **LevelView**
 + fixed lossScreenYPosisition typo
 + adjusted loss screen position (X & Y) so that the game over image is centered
+
+**LevelTwo**
++ changed to instantiate LevelView instead of LevelViewLevelTwo
 
 **GameOverImage**
 + scaled the image to fit within the bounds of the screen

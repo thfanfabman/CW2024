@@ -26,21 +26,20 @@ public class MainMenu {
     }
 
     public void showMenu() {
-        // Create a label for the main menu text
         Label menuLabel = new Label("Welcome to Sky Battle");
         menuLabel.setFont(new Font("Arial", 50));
         menuLabel.setTextFill(Color.BLACK);
 
-        // Create buttons for "Start Game" and "Exit"
         Button startButton = new Button("Start Game");
         startButton.setFont(new Font("Arial", 16));
         startButton.setPrefWidth(150);
+        Button howToPlay = new Button("How To Play");
+        howToPlay.setFont(new Font("Arial", 16));
+        howToPlay.setPrefWidth(150);
         Button exitButton = new Button("Exit");
-
         exitButton.setFont(new Font("Arial", 16));
         exitButton.setPrefWidth(150);
 
-        // Set button actions
         startButton.setOnAction(event -> {
             try {
                 controller.launchGame();
@@ -49,17 +48,37 @@ public class MainMenu {
                 throw new RuntimeException(e);
             }
         });
+        howToPlay.setOnAction(event -> showHowToPlay());
         exitButton.setOnAction(event -> stage.close());
 
         VBox menuBox = new VBox(10);
         menuBox.setAlignment(Pos.CENTER);
-        menuBox.getChildren().addAll(menuLabel, startButton, exitButton);
-        menuBox.setBackground(new Background(new BackgroundFill(Color.SKYBLUE, CornerRadii.EMPTY, null)));
+        menuBox.getChildren().addAll(menuLabel, startButton,howToPlay, exitButton);
+        menuBox.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, null)));
 
-
-        // Set up the scene and display it in the stage
         Scene scene = new Scene(menuBox, 400, 300);
         stage.setScene(scene);
+        stage.show();
+    }
+    private void showHowToPlay() {
+        Label howToPlayLabel = new Label("How To Play:\n\n1. Use arrow keys to move your character.\n"
+                + "2. Press spacebar to shoot.\n"
+                + "3. Avoid enemy attacks and destroy all targets to win.\n");
+        howToPlayLabel.setFont(new Font("Arial", 16));
+        howToPlayLabel.setTextFill(Color.BLACK);
+
+        Button returnButton = new Button("Return to Main Menu");
+        returnButton.setFont(new Font("Arial", 16));
+        returnButton.setPrefWidth(200);
+        returnButton.setOnAction(event -> showMenu());
+
+        VBox howToPlayBox = new VBox(10);
+        howToPlayBox.setAlignment(Pos.CENTER);
+        howToPlayBox.getChildren().addAll(howToPlayLabel, returnButton);
+        howToPlayBox.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, null)));
+
+        Scene howToPlayScene = new Scene(howToPlayBox, 400, 300);
+        stage.setScene(howToPlayScene);
         stage.show();
     }
 }
