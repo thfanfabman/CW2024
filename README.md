@@ -5,7 +5,7 @@
 + how to play is just text instructions
 + how to play current breaks the main menu and makes everything off center even when you return to the main menu
 
-### Modified Classes made
+### Modifications made
 
 **Main**
 + Changed to show the main menu instead of instantly starting the game
@@ -44,6 +44,7 @@
 + movement bounds & image height adjusted to match new image size
 + Added variable to track when user last fired a projectile
 + Added firing cooldown of 0.2 seconds
++ Gave player 0.2 of invincibility after taking damage
 
 **UserProjectile**
 + adjusted image height to match new image size

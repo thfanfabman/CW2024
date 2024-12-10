@@ -16,7 +16,9 @@ public class UserPlane extends FighterPlane {
 	private static final int PROJECTILE_Y_POSITION_OFFSET = 40;
 	private int velocityMultiplier;
 	private int numberOfKills;
-	private static final long FIRING_COOLDOWN_NANOS = 200_000_000; // 0.2 seconds in nanoseconds
+	private static final long FIRING_COOLDOWN_NANOS = 200_000_000;
+	private static final long I_FRAMES = 200_000_000;
+	private long lastHitTime = 0;
 	private long lastFireTime = 0;
 
 	public UserPlane(int initialHealth) {
@@ -73,6 +75,15 @@ public class UserPlane extends FighterPlane {
 
 	public void incrementKillCount() {
 		numberOfKills++;
+	}
+
+	@Override
+	public void takeDamage(){
+		long currentTime = System.nanoTime();
+		if(currentTime - lastHitTime > I_FRAMES){
+			super.takeDamage();
+			lastHitTime = currentTime;
+		}
 	}
 
 }
