@@ -67,6 +67,8 @@ public class MainMenu {
                 1. Use arrow keys to move your character.
                 2. Press spacebar to shoot.
                 3. Avoid enemy attacks and destroy all targets to win.
+                
+                Press escape anytime to pause the game, press any key to resume
                 """);
         howToPlayLabel.setFont(new Font("Arial", 16));
         howToPlayLabel.setTextFill(Color.BLACK);

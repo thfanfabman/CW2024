@@ -17,7 +17,7 @@ public class UserPlane extends FighterPlane {
 	private int velocityMultiplier;
 	private int numberOfKills;
 	private static final long FIRING_COOLDOWN_NANOS = 200_000_000;
-	private static final long I_FRAMES = 200_000_000;
+	private static final long I_FRAMES = 150_000_000;
 	private long lastHitTime = 0;
 	private long lastFireTime = 0;
 
