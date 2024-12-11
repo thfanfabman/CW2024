@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import com.example.demo.entities.ActiveActorDestructible;
 import com.example.demo.entities.planes.FighterPlane;
 import com.example.demo.entities.planes.UserPlane;
+import com.example.demo.entities.planes.planeFactory;
 import javafx.animation.*;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -43,7 +44,7 @@ public abstract class LevelParent extends Observable {
 		this.root = new Group();
 		this.scene = new Scene(root, screenWidth, screenHeight);
 		this.timeline = new Timeline();
-		this.user = new UserPlane(playerInitialHealth);
+		this.user = planeFactory.createUserPlane(5);
 		this.friendlyUnits = new ArrayList<>();
 		this.enemyUnits = new ArrayList<>();
 		this.userProjectiles = new ArrayList<>();

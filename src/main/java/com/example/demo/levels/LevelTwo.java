@@ -1,16 +1,16 @@
 package com.example.demo.levels;
 
-import com.example.demo.entities.planes.Boss;
+import com.example.demo.entities.ActiveActorDestructible;
+import com.example.demo.entities.planes.planeFactory;
 
 public class LevelTwo extends LevelParent {
 
 	private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background2.jpg";
 	private static final int PLAYER_INITIAL_HEALTH = 5;
-	private final Boss boss;
+	private ActiveActorDestructible boss;
 
 	public LevelTwo(double screenHeight, double screenWidth) {
 		super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
-		boss = new Boss();
 	}
 
 	@Override
@@ -31,6 +31,7 @@ public class LevelTwo extends LevelParent {
 	@Override
 	protected void spawnEnemyUnits() {
 		if (getCurrentNumberOfEnemies() == 0) {
+			boss = planeFactory.createEnemyPlane("boss",0,0);
 			addEnemyUnit(boss);
 		}
 	}
