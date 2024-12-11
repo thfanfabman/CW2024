@@ -2,6 +2,8 @@ package com.example.demo.entities.planes;
 
 import com.example.demo.entities.ActiveActorDestructible;
 import com.example.demo.entities.projectiles.UserProjectile;
+import javafx.scene.effect.Glow;
+
 
 public class UserPlane extends FighterPlane {
 
@@ -20,6 +22,7 @@ public class UserPlane extends FighterPlane {
 	private static final long I_FRAMES = 150_000_000;
 	private long lastHitTime = 0;
 	private long lastFireTime = 0;
+	private long currentTime;
 
 	public UserPlane(int initialHealth) {
 		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, initialHealth);
@@ -41,11 +44,15 @@ public class UserPlane extends FighterPlane {
 	@Override
 	public void updateActor() {
 		updatePosition();
+		currentTime = System.nanoTime();
+		if(currentTime - lastHitTime > I_FRAMES){
+			this.setEffect(null);
+		}
 	}
 	
 	@Override
 	public ActiveActorDestructible fireProjectile() {
-		long currentTime = System.nanoTime();
+		currentTime = System.nanoTime();
 		if (currentTime - lastFireTime < FIRING_COOLDOWN_NANOS){
 			return null;
 		}
@@ -79,10 +86,11 @@ public class UserPlane extends FighterPlane {
 
 	@Override
 	public void takeDamage(){
-		long currentTime = System.nanoTime();
+		currentTime = System.nanoTime();
 		if(currentTime - lastHitTime > I_FRAMES){
 			super.takeDamage();
 			lastHitTime = currentTime;
+			setEffect(new Glow(0.8));
 		}
 	}
 
