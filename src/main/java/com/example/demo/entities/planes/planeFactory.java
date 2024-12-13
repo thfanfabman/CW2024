@@ -17,6 +17,8 @@ public class planeFactory {
         switch (type.toLowerCase()) {
             case "enemy":
                 return new EnemyPlane(x, y);
+            case "enemy2":
+                return new EnemyPlane2(x, y);
             case "boss":
                 return new Boss();
             default:
