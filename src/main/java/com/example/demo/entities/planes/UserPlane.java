@@ -1,7 +1,7 @@
 package com.example.demo.entities.planes;
 
 import com.example.demo.entities.ActiveActorDestructible;
-import com.example.demo.entities.projectiles.UserProjectile;
+import com.example.demo.entities.projectiles.projectileFactory;
 import javafx.scene.effect.Glow;
 
 
@@ -28,7 +28,7 @@ public class UserPlane extends FighterPlane {
 		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, initialHealth);
 		velocityMultiplier = 0;
 	}
-	
+
 	@Override
 	public void updatePosition() {
 		if (isMoving()) {
@@ -57,7 +57,7 @@ public class UserPlane extends FighterPlane {
 			return null;
 		}
 		lastFireTime = currentTime;
-		return new UserProjectile(PROJECTILE_X_POSITION, getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET));
+		return projectileFactory.createProjectile("user", PROJECTILE_X_POSITION, getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET));
 	}
 
 	private boolean isMoving() {
