@@ -10,7 +10,7 @@ public class LevelBoss extends LevelParent {
 	private ActiveActorDestructible boss;
 
 	public LevelBoss(double screenHeight, double screenWidth) {
-		super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
+		super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH, 1);
 	}
 
 	@Override

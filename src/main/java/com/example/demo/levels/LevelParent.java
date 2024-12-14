@@ -11,6 +11,7 @@ import javafx.animation.*;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.*;
 import javafx.scene.input.*;
 import javafx.util.Duration;
@@ -36,11 +37,13 @@ public abstract class LevelParent extends Observable {
 	
 	private int currentNumberOfEnemies;
 	private LevelView levelView;
+	private int killsToProgress;
+	private Label killCountLabel;
 
 
 	private boolean isPaused = false;
 
-	public LevelParent(String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
+	public LevelParent(String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth, int killsToProgress) {
 		this.root = new Group();
 		this.scene = new Scene(root, screenWidth, screenHeight);
 		this.timeline = new Timeline();
@@ -49,6 +52,7 @@ public abstract class LevelParent extends Observable {
 		this.enemyUnits = new ArrayList<>();
 		this.userProjectiles = new ArrayList<>();
 		this.enemyProjectiles = new ArrayList<>();
+		this.killsToProgress = killsToProgress;
 
 		this.background = new ImageView(new Image(getClass().getResource(backgroundImageName).toExternalForm()));
 		this.screenHeight = screenHeight;
@@ -72,6 +76,7 @@ public abstract class LevelParent extends Observable {
 		initializeBackground();
 		initializeFriendlyUnits();
 		levelView.showHeartDisplay();
+		initializeKillProgressDisplay();
 		return scene;
 	}
 
@@ -131,6 +136,19 @@ public abstract class LevelParent extends Observable {
 			}
 		});
 		root.getChildren().add(background);
+	}
+
+	private void initializeKillProgressDisplay() {
+		// Initialize the progress bar
+
+		// Initialize the label for kill count
+		killCountLabel = new Label("Kills: 0 / " + killsToProgress);
+		killCountLabel.setStyle("-fx-font-size: 20px; -fx-text-fill: white;");
+		killCountLabel.setLayoutX(screenWidth - 170);
+		killCountLabel.setLayoutY(35); // Below the progress bar
+
+		// Add them to the root group
+		root.getChildren().addAll( killCountLabel);
 	}
 
 	private void fireProjectile() {
@@ -215,6 +233,11 @@ public abstract class LevelParent extends Observable {
 		for (int i = 0; i < currentNumberOfEnemies - enemyUnits.size(); i++) {
 			user.incrementKillCount();
 		}
+		updateKillProgress();
+	}
+
+	private void updateKillProgress() {
+		killCountLabel.setText("Kills: " + user.getNumberOfKills() + " / " + killsToProgress);
 	}
 
 	private boolean enemyHasPenetratedDefenses(ActiveActorDestructible enemy) {

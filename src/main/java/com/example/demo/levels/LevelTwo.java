@@ -11,9 +11,10 @@ public class LevelTwo extends LevelParent {
     private static final int KILLS_TO_ADVANCE = 10;
     private static final double ENEMY_SPAWN_PROBABILITY = .20;
     private static final int PLAYER_INITIAL_HEALTH = 5;
+    private static final double ENEMY2_SPAWN_PROBABILITY = 0.4;
 
     public LevelTwo(double screenHeight, double screenWidth) {
-        super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
+        super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH, KILLS_TO_ADVANCE);
     }
 
     @Override
@@ -36,9 +37,16 @@ public class LevelTwo extends LevelParent {
         int currentNumberOfEnemies = getCurrentNumberOfEnemies();
         for (int i = 0; i < TOTAL_ENEMIES - currentNumberOfEnemies; i++) {
             if (Math.random() < ENEMY_SPAWN_PROBABILITY) {
-                double newEnemyInitialYPosition = Math.random() * getEnemyMaximumYPosition();
-                ActiveActorDestructible newEnemy = planeFactory.createEnemyPlane("enemy2", getScreenWidth(), newEnemyInitialYPosition);
-                addEnemyUnit(newEnemy);
+                if(Math.random() < ENEMY2_SPAWN_PROBABILITY){
+                    double newEnemyInitialYPosition = Math.random() * getEnemyMaximumYPosition();
+                    ActiveActorDestructible newEnemy = planeFactory.createEnemyPlane("enemy2", getScreenWidth(), newEnemyInitialYPosition);
+                    addEnemyUnit(newEnemy);
+                }
+                else{
+                    double newEnemyInitialYPosition = Math.random() * getEnemyMaximumYPosition();
+                    ActiveActorDestructible newEnemy = planeFactory.createEnemyPlane("enemy", getScreenWidth(), newEnemyInitialYPosition);
+                    addEnemyUnit(newEnemy);
+                }
             }
         }
     }

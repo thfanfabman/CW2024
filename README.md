@@ -9,6 +9,7 @@ https://github.com/thfanfabman/CW2024
   + Start game - starts the game
   + how to play - changes scene to just text describing how to play the game
   + exit - exits the game
++ Kill count - text on the top right keeps track of the user's kills and how much they need to progress
 
 ### Implemented and not working properly
 + Mid game pausing
@@ -20,7 +21,6 @@ https://github.com/thfanfabman/CW2024
 
 ### Not implemented
 + SFX
-+ Kill/progress counter
 
 ### Added Classes
 **MainMenu**
@@ -31,7 +31,8 @@ https://github.com/thfanfabman/CW2024
 
 **LevelTwo**
 + Created a new Level and then renamed the previous leveltwo to levelboss
-+ new level is functionally the same as the first level except with a different enemy type and background
++ has a 40% chance to spawn enemyPlane2 instead of enemyPlane
++ functionally the same as level1 otherwise
 
 **enemyPlane2**
 + New enemy for LevelTwo
