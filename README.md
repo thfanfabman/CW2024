@@ -1,16 +1,26 @@
+### Github Link
+https://github.com/thfanfabman/CW2024
+
+
 ### Implemented and working
 + Added a firing delay of 0.2 seconds to the player
-+ Added brief invincibility to the player after getting hit
-  + The takeDamage function is overriden in the userPlane class so that it checks when they last took damage and applies damage if it was more than 0.15 seconds ago
++ main menu/how to play screen
+  + Added a rudimentary main menu screen with buttons
+  + Start game - starts the game
+  + how to play - changes scene to just text describing how to play the game
+  + exit - exits the game
 
 ### Implemented and not working properly
-+ main menu/how to play screen
-  + Main menu is centered when starting the game but the "how to play" screen is not centered and will cause the main menu screen to also be off centered when returning to the main menu
 + Mid game pausing
   + Pressing escape in game WILL pause the game. There just isn't any UI or indication of pausing other than everything suddenly stopping
   + pressing any key resumes the game
++ Added brief invincibility to the player after getting hit
+  + The takeDamage function is overriden in the userPlane class so that it checks when they last took damage and applies damage if it was more than 0.15 seconds ago
+  + Oversight makes it so that player also gets invincibility when an enemy plane makes it past them which is not intended. it is intended to only be given when taking damage from a projectile
 
 ### Not implemented
++ SFX
++ Kill/progress counter
 
 ### Added Classes
 **MainMenu**

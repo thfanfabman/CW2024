@@ -53,23 +53,30 @@ public class MainMenu {
 
         VBox menuBox = new VBox(10);
         menuBox.setAlignment(Pos.CENTER);
-        menuBox.getChildren().addAll(menuLabel, startButton,howToPlay, exitButton);
+        menuBox.setPadding(javafx.geometry.Insets.EMPTY); // Remove any padding
         menuBox.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, null)));
+        menuBox.getChildren().addAll(menuLabel, startButton, howToPlay, exitButton);
 
-        Scene scene = new Scene(menuBox, 400, 300);
+        Scene scene = new Scene(menuBox, 1300, 700);
         stage.setScene(scene);
+        stage.sizeToScene();
         stage.show();
     }
+
     private void showHowToPlay() {
         Label howToPlayLabel = new Label("""
-                How To Play:
-                
-                1. Use arrow keys to move your character.
-                2. Press spacebar to shoot.
-                3. Avoid enemy attacks and destroy all targets to win.
-                
-                Press escape anytime to pause the game, press any key to resume
-                """);
+            How To Play:
+            
+            You are the black plane on the left
+            
+            1. Use arrow keys to move your plane.
+            2. Press spacebar to shoot.
+            3. Getting hit by enemy attacks or letting pass you makes you take damage.
+            4. Avoid enemy attacks and destroy all targets to progress to the next level.
+            5. Defeat the boss to win!
+            
+            Press escape anytime to pause the game, press any key to resume
+            """);
         howToPlayLabel.setFont(new Font("Arial", 16));
         howToPlayLabel.setTextFill(Color.BLACK);
 
@@ -80,11 +87,14 @@ public class MainMenu {
 
         VBox howToPlayBox = new VBox(10);
         howToPlayBox.setAlignment(Pos.CENTER);
-        howToPlayBox.getChildren().addAll(howToPlayLabel, returnButton);
+        howToPlayBox.setPadding(javafx.geometry.Insets.EMPTY);
         howToPlayBox.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, null)));
+        howToPlayBox.getChildren().addAll(howToPlayLabel, returnButton);
 
-        Scene howToPlayScene = new Scene(howToPlayBox, 400, 300);
+        Scene howToPlayScene = new Scene(howToPlayBox, 1300, 700);
         stage.setScene(howToPlayScene);
+        stage.sizeToScene();
         stage.show();
     }
+
 }
