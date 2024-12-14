@@ -10,6 +10,7 @@ https://github.com/thfanfabman/CW2024
   + how to play - changes scene to just text describing how to play the game
   + exit - exits the game
 + Kill count - text on the top right keeps track of the user's kills and how much they need to progress
++ Boss Health bar - appears at the bottom of the screen on the boss level
 
 ### Implemented and not working properly
 + Mid game pausing
@@ -21,6 +22,7 @@ https://github.com/thfanfabman/CW2024
 
 ### Not implemented
 + SFX
++ Settings/Keybinds
 
 ### Added Classes
 **MainMenu**
@@ -62,14 +64,17 @@ https://github.com/thfanfabman/CW2024
 + added timeline.stop to the goToNextLevel function so that the game doesn't just stop when going to level 2
 + added logic to fireProjectile to accept null (returned when the user tries to fire during the cooldown period)
 + added pausegame and resumegame function which pause and play timeline
++ added getScreenHeight for health bar
 
 **LevelView**
 + fixed lossScreenYPosisition typo
 + adjusted loss screen position (X & Y) so that the game over image is centered
 
+
 **LevelTwo**
 + changed to instantiate LevelView instead of LevelViewLevelTwo
 + renamed to LevelBoss
++ added boss health bar and subsequent functions for it
 
 **GameOverImage**
 + scaled the image to fit within the bounds of the screen
@@ -77,6 +82,7 @@ https://github.com/thfanfabman/CW2024
 **Boss**
 + movement bounds & image height adjusted to match new image size
 + now glows instead while shielded
++ adjusted MAX_FRAMES_WITH_SHIELD to be lower, adjusted shield probability to compensate
 
 **EnemyPlane**
 + image height adjusted to match new image size

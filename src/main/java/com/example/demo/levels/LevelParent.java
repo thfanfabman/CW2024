@@ -139,15 +139,10 @@ public abstract class LevelParent extends Observable {
 	}
 
 	private void initializeKillProgressDisplay() {
-		// Initialize the progress bar
-
-		// Initialize the label for kill count
 		killCountLabel = new Label("Kills: 0 / " + killsToProgress);
 		killCountLabel.setStyle("-fx-font-size: 20px; -fx-text-fill: white;");
 		killCountLabel.setLayoutX(screenWidth - 170);
-		killCountLabel.setLayoutY(35); // Below the progress bar
-
-		// Add them to the root group
+		killCountLabel.setLayoutY(35);
 		root.getChildren().addAll( killCountLabel);
 	}
 
@@ -277,6 +272,10 @@ public abstract class LevelParent extends Observable {
 
 	protected double getScreenWidth() {
 		return screenWidth;
+	}
+
+	protected double getScreenHeight(){
+		return screenHeight;
 	}
 
 	protected boolean userIsDestroyed() {
