@@ -49,12 +49,13 @@ public abstract class LevelParent extends Observable {
 		this.root = new Group();
 		this.scene = new Scene(root, screenWidth, screenHeight);
 		this.timeline = new Timeline();
-		this.user = planeFactory.createUserPlane(5);
+		this.user = planeFactory.createUserPlane(playerInitialHealth);
 		this.friendlyUnits = new ArrayList<>();
 		this.enemyUnits = new ArrayList<>();
 		this.userProjectiles = new ArrayList<>();
 		this.enemyProjectiles = new ArrayList<>();
 		this.killsToProgress = killsToProgress;
+		this.playerInitialHealth = playerInitialHealth;
 
 		this.background = new ImageView(new Image(getClass().getResource(backgroundImageName).toExternalForm()));
 		this.screenHeight = screenHeight;

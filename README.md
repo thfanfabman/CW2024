@@ -53,10 +53,15 @@ mvn clean compile javafx:run
   + Added buttons to win and loss screen but didn't implement the retry button
 
 ### Not implemented
++ pause menu - tried doing it for a while somewhere around the midpoint of the project
+  and it didn't work so it got put on hold indefinitely while i worked on other stuff
 + SFX
 + Settings/Keybinds
-+ pause menu - tried doing it for a while somewhere around the midpoint of the project
-and it didn't work so it got put on hold indefinitely while i worked on other stuff
++ retry button
+
+time contraints and a lack of motivation lead to the exclusion these features.
+I would rather not spend even more time worrying about this while still having to 
+deal with my language module exams.
 
 ### Added Classes
 **MainMenu**
