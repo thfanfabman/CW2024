@@ -93,5 +93,8 @@ public class UserPlane extends FighterPlane {
 			setEffect(new Glow(0.8));
 		}
 	}
+	public void takeUnshieldedDamage(){
+		super.takeDamage();
+	}
 
 }

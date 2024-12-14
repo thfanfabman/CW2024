@@ -3,6 +3,7 @@ package com.example.demo.actors;
 public abstract class ActiveActorDestructible extends ActiveActor implements Destructible {
 
 	private boolean isDestroyed;
+	private boolean isPenetrated = false;
 
 	public ActiveActorDestructible(String imageName, int imageHeight, double initialXPos, double initialYPos) {
 		super(imageName, imageHeight, initialXPos, initialYPos);
@@ -29,5 +30,12 @@ public abstract class ActiveActorDestructible extends ActiveActor implements Des
 	public boolean isDestroyed() {
 		return isDestroyed;
 	}
-	
+
+	public void setPenetrated(boolean penetrated){
+		this.isPenetrated = penetrated;
+	}
+
+	public boolean isPenetrated() {
+		return isPenetrated;
+	}
 }

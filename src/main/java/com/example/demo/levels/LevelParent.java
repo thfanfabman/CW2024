@@ -11,6 +11,7 @@ import javafx.animation.*;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.*;
 import javafx.scene.input.*;
@@ -39,6 +40,7 @@ public abstract class LevelParent extends Observable {
 	private LevelView levelView;
 	private int killsToProgress;
 	private Label killCountLabel;
+	private int playerInitialHealth;
 
 
 	private boolean isPaused = false;
@@ -214,7 +216,8 @@ public abstract class LevelParent extends Observable {
 	private void handleEnemyPenetration() {
 		for (ActiveActorDestructible enemy : enemyUnits) {
 			if (enemyHasPenetratedDefenses(enemy)) {
-				user.takeDamage();
+				user.takeUnshieldedDamage();
+				enemy.setPenetrated(true);
 				enemy.destroy();
 			}
 		}
@@ -225,7 +228,11 @@ public abstract class LevelParent extends Observable {
 	}
 
 	private void updateKillCount() {
-		for (int i = 0; i < currentNumberOfEnemies - enemyUnits.size(); i++) {
+		int killsThisFrame = (int) userProjectiles.stream()
+				.flatMap(projectile -> enemyUnits.stream()
+						.filter(enemy -> !enemy.isPenetrated() && projectile.getBoundsInParent().intersects(enemy.getBoundsInParent()))
+				).count();
+		for (int i = 0; i < killsThisFrame; i++) {
 			user.incrementKillCount();
 		}
 		updateKillProgress();
@@ -242,12 +249,33 @@ public abstract class LevelParent extends Observable {
 	protected void winGame() {
 		timeline.stop();
 		levelView.showWinImage();
+		showEndGameOptions();
 	}
 
 	protected void loseGame() {
 		timeline.stop();
 		levelView.showGameOverImage();
+		showEndGameOptions();
 	}
+
+	private void showEndGameOptions() {
+		Button retryButton = new Button("Retry");
+		Button exitButton = new Button("Exit");
+
+		retryButton.setStyle("-fx-font-size: 18px;");
+		exitButton.setStyle("-fx-font-size: 18px;");
+
+		retryButton.setLayoutX(screenWidth / 2 - 80);
+		retryButton.setLayoutY(screenHeight - 100);
+
+		exitButton.setLayoutX(screenWidth / 2 + 20);
+		exitButton.setLayoutY(screenHeight - 100);
+
+		exitButton.setOnAction(e -> System.exit(0));
+
+		root.getChildren().addAll(retryButton, exitButton);
+	}
+
 
 	protected UserPlane getUser() {
 		return user;
