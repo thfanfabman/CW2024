@@ -1,4 +1,4 @@
-package com.example.demo.entities.planes;
+package com.example.demo.actors.planes;
 
 /**
  * factory class for creating different types of fighter planes.

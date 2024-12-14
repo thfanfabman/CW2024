@@ -1,11 +1,11 @@
 package com.example.demo.levels;
 
-import com.example.demo.entities.ActiveActorDestructible;
-import com.example.demo.entities.planes.planeFactory;
+import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.actors.planes.planeFactory;
 
 public class LevelTwo extends LevelParent {
 
-    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background1.jpg";
+    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background3.jpg";
     private static final String NEXT_LEVEL = "com.example.demo.levels.LevelBoss";
     private static final int TOTAL_ENEMIES = 5;
     private static final int KILLS_TO_ADVANCE = 10;

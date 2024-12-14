@@ -19,6 +19,20 @@
 + how to play is just text instructions
 + how to play current breaks the main menu and makes everything off center even when you return to the main menu
 
+**LevelTwo**
++ Created a new Level and then renamed the previous leveltwo to levelboss
++ new level is functionally the same as the first level except with a different enemy type and background
+
+**enemyPlane2**
++ New enemy for LevelTwo
++ oscillates between moving up and down
+
+**PlaneFactory**
++ Factory for creating planes in a scene, enemies and users
+
+**ProjectileFactory**
++ Factory for creating projectiles
+
 ### Modified Classes
 
 **General**
@@ -44,13 +58,14 @@
 
 **LevelTwo**
 + changed to instantiate LevelView instead of LevelViewLevelTwo
++ renamed to LevelBoss
 
 **GameOverImage**
 + scaled the image to fit within the bounds of the screen
 
 **Boss**
 + movement bounds & image height adjusted to match new image size
-+ now glows while shielded
++ now glows instead while shielded
 
 **EnemyPlane**
 + image height adjusted to match new image size
@@ -62,10 +77,16 @@
 + movement bounds & image height adjusted to match new image size
 + Added variable to track when user last fired a projectile
 + Added firing cooldown of 0.2 seconds
-+ Gave player 0.2 of invincibility after taking damage
++ Gave player 0.15 of invincibility after taking damage
++ UserPlane glows to indicate invincibility
 
 **UserProjectile**
 + adjusted image height to match new image size
 
 **Resources**
 + cropped images to remove transparent bounds so that the projectiles would hit within a more reasonable range
++ added new enemy and background
+
+**Removed due to lack of usage**
++ shield.png
++ ShieldImage.java

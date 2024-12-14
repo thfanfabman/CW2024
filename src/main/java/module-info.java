@@ -5,8 +5,8 @@ module com.example.demo {
 
     exports com.example.demo.controller;
     opens com.example.demo.levels to javafx.fxml;
-    opens com.example.demo.entities to javafx.fxml;
-    opens com.example.demo.entities.planes to javafx.fxml;
-    opens com.example.demo.entities.projectiles to javafx.fxml;
+    opens com.example.demo.actors to javafx.fxml;
+    opens com.example.demo.actors.planes to javafx.fxml;
+    opens com.example.demo.actors.projectiles to javafx.fxml;
     opens com.example.demo.UI to javafx.fxml;
 }

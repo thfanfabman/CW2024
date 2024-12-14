@@ -1,8 +1,4 @@
-package com.example.demo.entities.projectiles;
-
-import com.example.demo.entities.planes.Boss;
-import com.example.demo.entities.planes.EnemyPlane;
-import com.example.demo.entities.planes.FighterPlane;
+package com.example.demo.actors.projectiles;
 
 public class projectileFactory {
     public static Projectile createProjectile(String type, double x, double y) {

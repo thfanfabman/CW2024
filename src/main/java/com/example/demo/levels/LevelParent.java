@@ -3,10 +3,10 @@ package com.example.demo.levels;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import com.example.demo.entities.ActiveActorDestructible;
-import com.example.demo.entities.planes.FighterPlane;
-import com.example.demo.entities.planes.UserPlane;
-import com.example.demo.entities.planes.planeFactory;
+import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.actors.planes.FighterPlane;
+import com.example.demo.actors.planes.UserPlane;
+import com.example.demo.actors.planes.planeFactory;
 import javafx.animation.*;
 import javafx.event.EventHandler;
 import javafx.scene.Group;

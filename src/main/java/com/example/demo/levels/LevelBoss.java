@@ -1,7 +1,7 @@
 package com.example.demo.levels;
 
-import com.example.demo.entities.ActiveActorDestructible;
-import com.example.demo.entities.planes.planeFactory;
+import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.actors.planes.planeFactory;
 
 public class LevelBoss extends LevelParent {
 

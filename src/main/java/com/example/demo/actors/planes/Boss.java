@@ -1,9 +1,9 @@
-package com.example.demo.entities.planes;
+package com.example.demo.actors.planes;
 
 import java.util.*;
 
-import com.example.demo.entities.ActiveActorDestructible;
-import com.example.demo.entities.projectiles.projectileFactory;
+import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.actors.projectiles.projectileFactory;
 import javafx.scene.effect.Glow;
 
 public class Boss extends FighterPlane {
