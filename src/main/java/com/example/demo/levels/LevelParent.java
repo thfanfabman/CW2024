@@ -104,7 +104,6 @@ public abstract class LevelParent extends Observable {
 		handleEnemyProjectileCollisions();
 		handlePlaneCollisions();
 		removeAllDestroyedActors();
-		updateKillCount();
 		updateLevelView();
 		checkIfGameOver();
 	}
@@ -209,6 +208,7 @@ public abstract class LevelParent extends Observable {
 				if (actor.getBoundsInParent().intersects(otherActor.getBoundsInParent())) {
 					actor.takeDamage();
 					otherActor.takeDamage();
+					updateKillCount();
 				}
 			}
 		}
@@ -229,12 +229,10 @@ public abstract class LevelParent extends Observable {
 	}
 
 	private void updateKillCount() {
-		int killsThisFrame = (int) userProjectiles.stream()
-				.flatMap(projectile -> enemyUnits.stream()
-						.filter(enemy -> !enemy.isPenetrated() && projectile.getBoundsInParent().intersects(enemy.getBoundsInParent()))
-				).count();
-		for (int i = 0; i < killsThisFrame; i++) {
-			user.incrementKillCount();
+		for (ActiveActorDestructible enemy : enemyUnits) {
+			if(!enemy.isPenetrated() && enemy.isDestroyed()){
+				user.incrementKillCount();
+			}
 		}
 		updateKillProgress();
 	}
@@ -260,21 +258,21 @@ public abstract class LevelParent extends Observable {
 	}
 
 	private void showEndGameOptions() {
-		Button retryButton = new Button("Retry");
+		//Button retryButton = new Button("Retry");
 		Button exitButton = new Button("Exit");
 
-		retryButton.setStyle("-fx-font-size: 18px;");
+		//retryButton.setStyle("-fx-font-size: 18px;");
 		exitButton.setStyle("-fx-font-size: 18px;");
 
-		retryButton.setLayoutX(screenWidth / 2 - 80);
-		retryButton.setLayoutY(screenHeight - 100);
+		//retryButton.setLayoutX(screenWidth / 2 - 80);
+		//retryButton.setLayoutY(screenHeight - 100);
 
 		exitButton.setLayoutX(screenWidth / 2 + 20);
 		exitButton.setLayoutY(screenHeight - 100);
 
 		exitButton.setOnAction(e -> System.exit(0));
 
-		root.getChildren().addAll(retryButton, exitButton);
+		root.getChildren().addAll(exitButton);
 	}
 
 
