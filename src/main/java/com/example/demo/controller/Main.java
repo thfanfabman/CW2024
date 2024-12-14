@@ -39,7 +39,7 @@ public class Main extends Application {
 		// Create the game controller and main menu
 		myController = new Controller(stage);
 		MainMenu myMenu = new MainMenu(stage, myController);
-		myMenu.showMenu();
+		myMenu.showMenu(SCREEN_WIDTH,SCREEN_HEIGHT);
 	}
 
 	/**

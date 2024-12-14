@@ -48,7 +48,6 @@ public abstract class LevelParent extends Observable {
 	private LevelView levelView;
 	private int killsToProgress;
 	private Label killCountLabel;
-	private int playerInitialHealth;
 
 
 	private boolean isPaused = false;
@@ -72,7 +71,6 @@ public abstract class LevelParent extends Observable {
 		this.userProjectiles = new ArrayList<>();
 		this.enemyProjectiles = new ArrayList<>();
 		this.killsToProgress = killsToProgress;
-		this.playerInitialHealth = playerInitialHealth;
 
 		this.background = new ImageView(new Image(getClass().getResource(backgroundImageName).toExternalForm()));
 		this.screenHeight = screenHeight;

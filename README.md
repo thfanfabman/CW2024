@@ -3,7 +3,7 @@ https://github.com/thfanfabman/CW2024
 
 ### Compilation
 **Prerequisites**
-+ Java 19 JDK or later
++ Java 19.0.2 JDK or later
 + JavaFX
 + Apache Maven
 
@@ -34,11 +34,7 @@ mvn clean compile javafx:run
 
 ### Implemented and working
 + Added a firing delay of 0.2 seconds to the player
-+ main menu/how to play screen
-  + Added a rudimentary main menu screen with buttons
-  + Start game - starts the game
-  + how to play - changes scene to just text describing how to play the game
-  + exit - exits the game
+
 + Kill count - text on the top right keeps track of the user's kills and how much they need to progress
 + Boss Health bar - appears at the bottom of the screen on the boss level
 + New enemy type - 40% chance to spawn when an enemy plane spawns on lvl 2
@@ -51,6 +47,14 @@ mvn clean compile javafx:run
   + pressing any key resumes the game
 + end game buttons
   + Added buttons to win and loss screen but didn't implement the retry button
++ main menu/how to play screen
+  + Added a rudimentary main menu screen with buttons
+  + Start game - starts the game
+  + how to play - changes scene to just text describing how to play the game
+  + exit - exits the game
+  + Everytime you click on how to play and return, it briefly makes the stage larger before
+changing it back to what it's supposed to be. more in unexpected problems
+
 
 ### Not implemented
 + pause menu - tried doing it for a while somewhere around the midpoint of the project
@@ -154,3 +158,14 @@ no longer increments kill count if so
 **Removed due to lack of usage**
 + shield.png
 + ShieldImage.java
+
+### Unexpected Problems
+After adding the main menu screen, I added a how to play screen. It was off center and caused
+the main menu to be off center once you returned to it. I fixed it using `stage.sizeToScreen()`
+which solved to problem of centering. Then it took me awhile to realize that this caused
+the stage to constantly increase in size whenever a level is loaded. The "fix" I have implemented
+is to count the number of times that the main menu has been accessed, since the first time it
+is accessed does not cause problems. Subsequent accesses will call `stage.sizeToScreen()` before
+the stage width and height is set. This is a temporary solution which causes the screen to 
+briefly resize everytime you go to the how to play screen and back to the main menu and should be
+substituted for a better solution in the future.
